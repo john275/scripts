@@ -1,0 +1,25 @@
+#!/bin/bash
+
+server=server
+
+xmacaddress=$(eyaml decrypt -s $(grep 'server::xmacaddress:' ~/facts.eyaml | awk '{print $2}'))
+broadcastaddress=$(eyaml decrypt -s $(grep 'home::subnet::broadcastaddress:' ~/facts.eyaml | awk '{print $2}'))
+
+$(curl --connect-timeout 5 ${server}:22 2> /dev/null | grep -q ^SSH)
+resp=$?
+
+if ((${resp}==1))
+then
+	wolhplocal.py ${xmacaddress} ${broadcastaddress}
+fi
+
+while ((${resp}==1))
+do
+	sleep 10
+	$(curl --connect-timeout 5 ${server}:22 2> /dev/null | grep -q ^SSH)
+	resp=$?
+done
+
+ssh -X ${server}
+
+
