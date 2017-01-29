@@ -2,6 +2,8 @@
 
 server=server
 
+export EYAML_CONFIG=$(echo pkcs7_private_key: $HOME/keys/private_key.pkcs7.pem;echo pkcs7_public_key: $HOME/keys/public_key.pkcs7.pem)
+
 xmacaddress=$(eyaml decrypt -s $(grep 'server::xmacaddress:' ~/facts.eyaml | awk '{print $2}'))
 broadcastaddress=$(eyaml decrypt -s $(grep 'home::subnet::broadcastaddress:' ~/facts.eyaml | awk '{print $2}'))
 
@@ -21,5 +23,3 @@ do
 done
 
 ssh -X ${server}
-
-
