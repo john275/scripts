@@ -16,6 +16,7 @@ ln -s bin/scripts/facts.eyaml
 
 cd -
 
+ln -s scripts/wolhplocal.py
 ln -s scripts/hiddenon
 ln -s scripts/hiddenoff
 ln -s scripts/ums
