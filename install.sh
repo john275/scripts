@@ -11,6 +11,12 @@ git clone git@github.com:john275/scripts.git
 
 cd
 
+cat << --end > ${HOME}/eyamlkeys.yaml
+---
+pkcs7_private_key: '/Users/${HOME}/keys/private_key.pkcs7.pem'
+pkcs7_public_key: '/Users/${HOME}/keys/public_key.pkcs7.pem'
+--end
+
 ln -s bin/scripts/eyamlkeys.yaml
 ln -s bin/scripts/facts.eyaml
 
