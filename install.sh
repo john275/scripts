@@ -13,7 +13,7 @@ ln -s bin/scripts/facts.eyaml
 
 cd -
 
-ln -s script\hiddenon
-ln -s script\hiddenoff
-ln -s script\ums
-ln -s script\camera
+ln -s scripts\hiddenon
+ln -s scripts\hiddenoff
+ln -s scripts\ums
+ln -s scripts\camera
