@@ -4,6 +4,8 @@ cd
 
 mkdir bin
 cd bin
+
+rm -rf scripts
 git clone git@github.com:john275/scripts.git
 
 cd
