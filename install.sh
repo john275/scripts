@@ -2,6 +2,8 @@
 
 cd
 
+rm -rf bin
+
 mkdir bin
 cd bin
 
