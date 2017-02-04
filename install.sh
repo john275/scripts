@@ -2,7 +2,7 @@
 
 cd
 
-rm -rf bin
+rm -rf bin ${HOME}/eyamlkeys.yaml ${HOME}/facts.eyaml
 
 mkdir bin
 cd bin
