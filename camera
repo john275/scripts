@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
+
+user=$(eyaml decrypt -s $(grep 'home::camera::user:' ${HOME}/facts.eyaml | awk '{print $2}'))
+password=$(eyaml decrypt -s $(grep 'home::camera::password:' ${HOME}/facts.eyaml | awk '{print $2}'))
+
+
+/Applications/VLC.app/Contents/MacOS/VLC rtsp://${user}:${password}@camera.computez.local:554/Streaming/Channels/1 &

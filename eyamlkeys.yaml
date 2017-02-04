@@ -1,0 +1,3 @@
+---
+pkcs7_private_key: '/Users/john/keys/private_key.pkcs7.pem'
+pkcs7_public_key: '/Users/john/keys/public_key.pkcs7.pem'
