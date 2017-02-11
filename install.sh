@@ -7,8 +7,7 @@ rm -rf bin ${HOME}/eyamlkeys.yaml ${HOME}/facts.eyaml
 mkdir bin
 cd bin
 
-git clone git@github.com:john275/scripts.git
-
+git clone https://github.com/john275/scripts.git
 cd
 
 cat << --end > ${HOME}/eyamlkeys.yaml
