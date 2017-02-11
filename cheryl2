@@ -2,7 +2,7 @@
 
 export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
 
-auth=$(eyaml decrypt -s $(grep 'home::router::basicauth:' ${HOME}/facts.eyaml | awk '{print $2}'))
+auth=$(eyaml decrypt -s $(grep 'home::router::basicauth:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null)
 
 curl 'http://192.168.1.1/DEV_redirect.htm' -H 'Authorization: Basic '${auth} -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Referer: http://192.168.1.1/start.htm' -H 'Connection: keep-alive' --compressed > /dev/null 2>&1
 curl 'http://192.168.1.1/DEV_device2.htm' -H 'Authorization: Basic '${auth} -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Referer: http://192.168.1.1/DEV_redirect.htm' -H 'Connection: keep-alive' --compressed 2> /dev/null | grep -q 'C0:EE:FB:50:76:88'
