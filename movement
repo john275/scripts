@@ -39,6 +39,7 @@ do
           fi
         fi
       else
+        today=$(date +%Y%m%d)
         messagesent=false
       fi
   fi
