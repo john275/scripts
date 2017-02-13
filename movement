@@ -17,7 +17,7 @@ do
       then
         if ! ${messagesent}
         then
-          if (( $(date +%H) > 8 ))
+          if (( $(date +%k) > 8 ))
           then
             now=$(date +%s)
             while [ $res == 1 ]
@@ -33,6 +33,7 @@ do
             if (( $(($(date +%s)-now))<20))
             then
               messagesent=true
+              echo ${preamble}Movement at Elmstead - $(date +%H:%M)
               echo ${preamble}Movement at Elmstead - $(date +%H:%M) | /usr/bin/sendxmpp -t -u john275 -o gmail.com cherylbucke
               preamble=""
             fi
