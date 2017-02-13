@@ -1,15 +1,20 @@
 #!/bin/bash
 
-/usr/local/bin/gpio -g mode 17 up
-
 messagesent=false
 today=$(date +%Y%m%d)
 preamble="Initial Startup - $(date +%Y/%m/%d_%H:%M) - "
+gpio=17
+gtalkuser=john275
+gtalkrecipient=cherylbucke
+sleeptime=0.1
+message="Movement at Elmstead - "
+
+/usr/local/bin/gpio -g mode ${gpio} up
 
 while $true
 do
 
-  res=$(/usr/local/bin/gpio -g read 17)
+  res=$(/usr/local/bin/gpio -g read ${gpio})
 
   if [ $res == 1 ]
   then
@@ -22,19 +27,19 @@ do
             now=$(date +%s)
             while [ $res == 1 ]
             do
-              res=$(/usr/local/bin/gpio -g read 17)
-              sleep 0.1
+              res=$(/usr/local/bin/gpio -g read ${gpio})
+              sleep ${sleeptime}
             done
             while [ $res == 0 ]
             do
-              res=$(/usr/local/bin/gpio -g read 17)
-              sleep 0.1
+              res=$(/usr/local/bin/gpio -g read ${gpio})
+              sleep ${sleeptime}
             done
             if (( $(($(date +%s)-now))<20))
             then
               messagesent=true
-              echo ${preamble}Movement at Elmstead - $(date +%H:%M)
-              echo ${preamble}Movement at Elmstead - $(date +%H:%M) | /usr/bin/sendxmpp -t -u john275 -o gmail.com cherylbucke
+              echo ${preamble}${message}$(date +%H:%M)
+              echo ${preamble}${message}$(date +%H:%M) | /usr/bin/sendxmpp -t -u ${gtalkuser} -o gmail.com ${gtalkrecipient}
               preamble=""
             fi
           fi
@@ -45,6 +50,6 @@ do
       fi
   fi
 
-  sleep 0.1
+  sleep ${sleeptime}
 
 done
