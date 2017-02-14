@@ -1,0 +1,18 @@
+#!/bin/bash
+
+gpio=$1
+previous=$(date +%s)
+
+/usr/local/bin/gpio -g mode ${gpio} up
+
+while true
+do
+  res=$(/usr/local/bin/gpio -g read ${gpio})
+  now=$(date +%s)
+  if (( ${now} > ${previous} ))
+  then
+    echo $(date -d@${now} +%y-%m-%d\ %H:%M:%S) ${res}
+  fi
+  sleep 0.1
+  previous=${now}
+done
