@@ -1,0 +1,55 @@
+#!/bin/bash
+
+messagesent=false
+today=$(date +%Y%m%d)
+preamble="Initial Startup - $(date +%Y/%m/%d_%H:%M) - "
+gpio=17
+gtalkuser=john275
+gtalkrecipient=cherylbucke
+sleeptime=0.1
+message="Movement at Elmstead - "
+
+/usr/local/bin/gpio -g mode ${gpio} up
+
+while $true
+do
+
+  res=$(/usr/local/bin/gpio -g read ${gpio})
+
+  if [ $res == 1 ]
+  then
+      if [ "${today}" == "$(date +%Y%m%d)" ]
+      then
+        if ! ${messagesent}
+        then
+          if (( $(date +%k) > 8 ))
+          then
+            now=$(date +%s)
+            while [ $res == 1 ]
+            do
+              res=$(/usr/local/bin/gpio -g read ${gpio})
+              sleep ${sleeptime}
+            done
+            while [ $res == 0 ]
+            do
+              res=$(/usr/local/bin/gpio -g read ${gpio})
+              sleep ${sleeptime}
+            done
+            if (( $(($(date +%s)-now))<20))
+            then
+              messagesent=true
+              echo ${preamble}${message}$(date +%H:%M)
+              echo ${preamble}${message}$(date +%H:%M) | /usr/bin/sendxmpp -t -u ${gtalkuser} -o gmail.com ${gtalkrecipient}
+              preamble=""
+            fi
+          fi
+        fi
+      else
+        today=$(date +%Y%m%d)
+        messagesent=false
+      fi
+  fi
+
+  sleep ${sleeptime}
+
+done

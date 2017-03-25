@@ -7,8 +7,7 @@ rm -rf bin ${HOME}/eyamlkeys.yaml ${HOME}/facts.eyaml
 mkdir bin
 cd bin
 
-git clone git@github.com:john275/scripts.git
-
+git clone https://github.com/john275/scripts.git
 cd
 
 cat << --end > ${HOME}/eyamlkeys.yaml
@@ -27,3 +26,5 @@ ln -s scripts/hiddenoff
 ln -s scripts/ums
 ln -s scripts/camera
 ln -s scripts/cheryl2
+ln -s scripts/movement
+ln -s scripts/gpiolog
