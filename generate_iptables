@@ -28,4 +28,4 @@ COMMIT
 COMMIT
 -end
 
-iptables-restore < /etc/iptables/rules.v4
+/sbin/iptables-restore < /etc/iptables/rules.v4
