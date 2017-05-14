@@ -26,6 +26,6 @@ COMMIT
 :FORWARD ACCEPT [23395:4896761]
 :OUTPUT ACCEPT [2634:233694]
 COMMIT
---end
+-end
 
 service iptables restart
