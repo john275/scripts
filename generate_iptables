@@ -1,0 +1,31 @@
+#!/bin/bash
+
+ip=$(dig +short john275.ddns.net)
+
+previous_ip=$(cat /tmp/ip)
+
+if [[ "${ip}" == "${previous_ip}" ]]
+then
+  exit 0
+fi
+
+echo ${ip} > /tmp/ip
+
+cat <<--end > /etc/iptables/rules.v4
+*nat
+:PREROUTING ACCEPT [6:404]
+:INPUT ACCEPT [6:404]
+:OUTPUT ACCEPT [98:16761]
+:POSTROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp -m tcp --dport 80 -j DNAT --to-destination ${ip}:7780
+-A PREROUTING -p tcp -m tcp --dport 443 -j DNAT --to-destination ${ip}:7443
+-A POSTROUTING -j MASQUERADE
+COMMIT
+*filter
+:INPUT ACCEPT [3913:53624724]
+:FORWARD ACCEPT [23395:4896761]
+:OUTPUT ACCEPT [2634:233694]
+COMMIT
+--end
+
+service iptables restart
