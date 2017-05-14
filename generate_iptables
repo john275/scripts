@@ -2,7 +2,7 @@
 
 ip=$(dig +short john275.ddns.net)
 
-previous_ip=$(cat /tmp/ip)
+previous_ip=$(cat /tmp/ip 2> /dev/null)
 
 if [[ "${ip}" == "${previous_ip}" ]]
 then
@@ -28,4 +28,4 @@ COMMIT
 COMMIT
 -end
 
-service iptables restart
+iptables-restore < /etc/iptables/rules.v4
