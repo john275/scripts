@@ -11,7 +11,7 @@ fi
 
 echo ${ip} > /tmp/ip
 
-echo IP Changed to ${IP} or system rebooted | mail -s 'john275.ddns.net IP Change'
+echo IP Changed to ${ip} or system rebooted | mail -s 'john275.ddns.net IP Change' john.ballantyne@computez.com
 
 cat <<--end > /etc/iptables/rules.v4
 *nat
