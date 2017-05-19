@@ -11,6 +11,8 @@ fi
 
 echo ${ip} > /tmp/ip
 
+echo IP Changed to ${IP} or system rebooted | mail -s 'john275.ddns.net IP Change'
+
 cat <<--end > /etc/iptables/rules.v4
 *nat
 :PREROUTING ACCEPT [6:404]
