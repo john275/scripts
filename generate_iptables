@@ -24,7 +24,7 @@ cat <<--end > /etc/iptables/rules.v4
 -A PREROUTING -p tcp -m tcp --dport 443 -j DNAT --to-destination ${ip}:443
 -A PREROUTING -p tcp -m tcp --dport 554 -j DNAT --to-destination ${ip}:554
 -A PREROUTING -p tcp -m tcp --dport 9997 -j DNAT --to-destination ${ip}:9997
--A PREROUTING -p tcp -m tcp --dport 9997 -j DNAT --to-destination ${ip}:8000
+-A PREROUTING -p tcp -m tcp --dport 8000 -j DNAT --to-destination ${ip}:8000
 -A POSTROUTING -j MASQUERADE
 COMMIT
 *filter
