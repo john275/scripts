@@ -28,3 +28,4 @@ ln -s scripts/camera
 ln -s scripts/cheryl2
 ln -s scripts/movement
 ln -s scripts/gpiolog
+ln -s scripts/2fa

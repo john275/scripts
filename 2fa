@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
+
+
+echo -en Gmail' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Gmail:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Akamai' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Akamai:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Secret Server' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Secret_Server:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Github' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Github:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS Arcanum' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Arcanum:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS MOL' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS Sandbox' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Sandbox:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS root' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_root:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Slack MOL' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Slack Metro' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_Metro:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS BidMax' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_BidMax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en AWS Metrodev' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Metrodev:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Bitbucket' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Bitbucket:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en Envato' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Envato:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en PayPal' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::PayPal:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
