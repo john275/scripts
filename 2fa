@@ -19,3 +19,4 @@ echo -en AWS Metrodev' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(
 echo -en Bitbucket' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Bitbucket:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en Envato' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Envato:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en PayPal' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::PayPal:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en MailGun' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::MailGun:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
