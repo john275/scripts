@@ -20,3 +20,5 @@ echo -en Bitbucket' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(gre
 echo -en Envato' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Envato:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en PayPal' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::PayPal:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en MailGun' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::MailGun:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en GovGWTax' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWTax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en GovGWPension' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
