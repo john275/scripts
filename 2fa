@@ -22,4 +22,4 @@ echo -en PayPal' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep
 echo -en MailGun' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::MailGun:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en GovGWTax' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWTax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en GovGWPension' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-echo -en GovGWPension' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en BitWarden' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::BitWarden:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
