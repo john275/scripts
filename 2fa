@@ -23,3 +23,4 @@ echo -en MailGun' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 
 echo -en GovGWTax' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWTax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en GovGWPension' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en BitWarden' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::BitWarden:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en SSO' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::SSO:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
