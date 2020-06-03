@@ -1,16 +1,20 @@
 #!/bin/bash
 
 export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
-user=$(eyaml decrypt -s $(grep 'wiki::user:' ${HOME}/facts.eyaml))
-pass=$(eyaml decrypt -s $(grep 'wiki::pass:' ${HOME}/facts.eyaml))
+user=$(eyaml decrypt -s $(grep 'wiki::user:' ${HOME}/facts.eyaml | awk '{print $2}'))
+pass=$(eyaml decrypt -s $(grep 'wiki::pass:' ${HOME}/facts.eyaml | awk '{print $2}'))
 datestamp=$(date +%y%m%d_%H%M%S)
 
 cd
 
 mv Downloads/tiddlywiki.html gubbins.html
-
+if [[ ! "$?" == "0" ]]
+then
+	echo wiki not downloaded
+	exit 1
+fi
 curl -s https://wiki.computez.com/index.html > gubbins.html.${datestamp}
-res=$(curl -u${user}:${pass} -XPOST https://www3.computez.com/upm/deletefile.php --data 'fileToDelete=gubbins.html&Delete=Submit') 
+res=$(curl -su${user}:${pass} -XPOST https://www3.computez.com/upm/deletefile.php --data 'fileToDelete=gubbins.html&Delete=Submit')
 if [[ ! "${res}" == "OK" ]]
 then
 	echo failed to delete remote file "${res}"
@@ -31,7 +35,7 @@ Submit
 ------WebKitFormBoundaryZ4VvZa2iepxwWGwf--
 -end
 cat /tmp/$$part1 gubbins.html /tmp/$$part2 > /tmp/$$data
-res=$(curl -u${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
+res=$(curl -su${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
 if [[ ! "${res}" == "OK" ]]
 then
 	echo failed to upload new Wiki file "${res}"
@@ -44,7 +48,7 @@ Content-Type: text/html
 
 -end
 cat /tmp/$$part1 gubbins.html.${datestamp} /tmp/$$part2 > /tmp/$$data
-res=$(curl -u${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
+res=$(curl -su${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
 if [[ ! "${res}" == "OK" ]]
 then
 	echo failed to upload previous Wiki file "${res}"
