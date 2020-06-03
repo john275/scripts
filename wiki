@@ -1,0 +1,54 @@
+#!/bin/bash
+
+export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
+user=$(eyaml decrypt -s $(grep 'wiki::user:' ${HOME}/facts.eyaml))
+pass=$(eyaml decrypt -s $(grep 'wiki::pass:' ${HOME}/facts.eyaml))
+datestamp=$(date +%y%m%d_%H%M%S)
+
+cd
+
+mv Downloads/tiddlywiki.html gubbins.html
+
+curl -s https://wiki.computez.com/index.html > gubbins.html.${datestamp}
+res=$(curl -u${user}:${pass} -XPOST https://www3.computez.com/upm/deletefile.php --data 'fileToDelete=gubbins.html&Delete=Submit') 
+if [[ ! "${res}" == "OK" ]]
+then
+	echo failed to delete remote file "${res}"
+	exit 1
+fi
+cat <<--end > /tmp/$$part1
+------WebKitFormBoundaryZ4VvZa2iepxwWGwf
+Content-Disposition: form-data; name="userfile"; filename="gubbins.html"
+Content-Type: text/html
+
+-end
+cat <<--end > /tmp/$$part2
+
+------WebKitFormBoundaryZ4VvZa2iepxwWGwf
+Content-Disposition: form-data; name="Upload"
+
+Submit
+------WebKitFormBoundaryZ4VvZa2iepxwWGwf--
+-end
+cat /tmp/$$part1 gubbins.html /tmp/$$part2 > /tmp/$$data
+res=$(curl -u${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
+if [[ ! "${res}" == "OK" ]]
+then
+	echo failed to upload new Wiki file "${res}"
+	exit 1
+fi
+cat <<--end > /tmp/$$part1
+------WebKitFormBoundaryZ4VvZa2iepxwWGwf
+Content-Disposition: form-data; name="userfile"; filename="gubbins.html.${datestamp}"
+Content-Type: text/html
+
+-end
+cat /tmp/$$part1 gubbins.html.${datestamp} /tmp/$$part2 > /tmp/$$data
+res=$(curl -u${user}:${pass} 'https://www3.computez.com/upm/upload.php' -XPOST -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryZ4VvZa2iepxwWGwf' --data-binary @/tmp/$$data)
+if [[ ! "${res}" == "OK" ]]
+then
+	echo failed to upload previous Wiki file "${res}"
+	exit 1
+fi
+
+rm /tmp/$$part1 /tmp/$$part2 /tmp/$$data
