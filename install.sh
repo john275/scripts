@@ -30,3 +30,4 @@ ln -s scripts/movement
 ln -s scripts/gpiolog
 ln -s scripts/2fa
 ln -s scripts/wiki
+ln -s scripts/camerapublic
