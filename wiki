@@ -7,7 +7,7 @@ datestamp=$(date +%y%m%d_%H%M%S)
 
 cd
 
-mv Downloads/tiddlywiki.html gubbins.html
+mv Downloads/gubbins.html gubbins.html
 if [[ ! "$?" == "0" ]]
 then
 	echo wiki not downloaded
