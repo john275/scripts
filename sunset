@@ -1,0 +1,65 @@
+#!/bin/bash
+
+home='lat=51.95492011228146&lng=0.4871583019738189'
+walton='lat=51.864847&lng=1.290935'
+
+if [[ "${2}" == "walton" ]]
+then
+  latlng=${walton}
+else
+  latlng=${home}
+fi
+
+datebin=$(which date)
+
+if [[ "$(uname -s)" =~ "Darwin" ]]
+then
+  if [ -x "$(which gdate)" ]
+  then
+    datebin=$(which gdate)
+  else
+    echo This script requires gnu date OSX date binary won\'t cut it \`brew install coreutils\`
+    exit 1
+  fi
+fi
+
+api_data=$(curl -s 'https://api.sunrise-sunset.org/json?'${latlng} | jq .results.$(basename ${0}))
+api_data_len=${#api_data}
+
+if [[ "${#api_data}" == "12" ]]
+then
+  if [[ "${api_data: -3}" =~ "PM" ]]
+  then
+    H=$((${api_data:1:1}+12))
+  else
+    H=${api_data:1:1}
+  fi
+  M=${api_data:3:2}
+  S=${api_data:6:2}
+else
+  if [[ "${api_data: -3}" =~ "PM" ]]
+  then
+    H=$((${api_data:1:2}+12))
+  else
+    H=${api_data:1:2}
+  fi
+  M=${api_data:4:2}
+  S=${api_data:7:2}
+fi
+
+offset=$(date +%z)
+
+seconds_before=${1:--0}
+
+[[ "$(uname -s)" =~ "Darwin" ]] && api_data_epoc=$(($((${offset:0:3}*60+${offset:3:2}))*60+$(date -v0${H}H -v${M}M -v${S}S +%s)${seconds_before})) || api_data_epoc=$(($((${offset:0:3}*60+${offset:3:2}))*60+$(date -d${H}:${M}:${S} +%s)${seconds_before}))
+echo $(basename $0) \@ $(${datebin} -d @${api_data_epoc} +%H:%M:%S)
+
+while [[ "${api_data_epoc}" -gt "$(date +%s)" ]]
+do
+  echo -ne "\r     \r"$((${api_data_epoc} - $(date +%s)))
+  sleep 1
+done
+
+echo -ne "\r"0"\n"
+
+#curl -XPOST http://192.168.1.83/LED

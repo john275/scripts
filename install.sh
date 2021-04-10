@@ -31,3 +31,12 @@ ln -s scripts/gpiolog
 ln -s scripts/2fa
 ln -s scripts/wiki
 ln -s scripts/camerapublic
+ln -s scripts/sunset
+ln -s scripts/sunset sunrise
+ln -s scripts/sunset solar_noon
+ln -s scripts/sunset civil_twilight_begin
+ln -s scripts/sunset civil_twilight_end
+ln -s scripts/sunset nautical_twilight_begin
+ln -s scripts/sunset nautical_twilight_end
+ln -s scripts/sunset astronomical_twilight_begin
+ln -s scripts/sunset astronomical_twilight_end
