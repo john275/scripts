@@ -7,7 +7,12 @@ if [[ "${2}" == "walton" ]]
 then
   latlng=${walton}
 else
-  latlng=${home}
+  if [[ "${2}" =~ "lat" ]]
+  then
+    latlng=${2}
+  else
+    latlng=${home}
+  fi
 fi
 
 datebin=$(which date)
