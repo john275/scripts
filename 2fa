@@ -25,3 +25,4 @@ echo -en GovGWPension' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(
 echo -en BitWarden' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::BitWarden:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en SSO' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::SSO:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en npmjs' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::npmjs:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+echo -en 1password' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1password:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
