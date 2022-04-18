@@ -28,7 +28,7 @@ then
   fi
 fi
 
-api_data=$(curl -s 'https://api.sunrise-sunset.org/json?'${latlng} | jq .results.$(basename ${0}))
+api_data=$(curl -ks 'https://api.sunrise-sunset.org/json?'${latlng} | jq .results.$(basename ${0}))
 api_data_len=${#api_data}
 
 if [[ "${#api_data}" == "12" ]]
