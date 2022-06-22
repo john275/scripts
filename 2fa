@@ -2,6 +2,24 @@
 
 export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
 
+if [[ $(date +%S) > 30 ]]
+then
+
+  until [[ "$(date +%S)" == "00" ]]
+  do
+    echo -ne "\r  \r"$((60 - $(date +%S)));
+  done
+
+else
+
+  until [[ "$(date +%S)" == "30" ]]
+  do
+    echo -ne "\r  \r"$((30 - $(date +%-S)));
+  done
+
+fi
+
+clear
 
 echo -en Gmail' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Gmail:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 echo -en AWS' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
