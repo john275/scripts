@@ -1,0 +1,8 @@
+#!/bin/bash
+
+type=${2:-V}
+
+export TZ=UTC
+
+echo "Date,Time,Name,Hits,Written,Read" > $1.csv
+egrep '^('${type}'.*'$3'|[0-9])' $1.log | awk -F'\t' '{if($1=="'${type}'"){print strftime(" %Y/%m/%d,%H:%M:%S",t)","$2","$3","$4*8/1000/60/5","$5*8/1000/60/5} else {t=substr($1,1,10)}}' >> $1.csv
