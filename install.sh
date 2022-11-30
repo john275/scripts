@@ -41,3 +41,4 @@ ln -s scripts/sunset nautical_twilight_end
 ln -s scripts/sunset astronomical_twilight_begin
 ln -s scripts/sunset astronomical_twilight_end
 ln -s scripts/send_arp.py
+ln -s scripts/kvm
