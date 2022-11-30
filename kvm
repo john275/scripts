@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd
+
+pw=$(eyaml decrypt -s $(grep 'ilo::password:' ${HOME}/facts.eyaml | awk '{print $2}'))
+
 cd ~/IPMIView_2.20.0_build.220309_bundleJRE_Linux_x64
 
-java -jar iKVM.jar 192.168.1.200 molsupport $(eyaml decrypt -s $(grep 'ilo::password:' ${HOME}/facts.eyaml | awk '{print $2}')) 5900 5900
+java -jar iKVM.jar 192.168.1.200 molsupport ${pw} 5900 5900
