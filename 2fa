@@ -27,6 +27,7 @@ function 2fa_codes {
   echo -en SSO' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::SSO:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en npmjs' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::npmjs:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en 1password' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1password:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+  echo -en 1password DMG' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1passwordDMG:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en namecheap' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::namecheap:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en rubrick REA' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 #  echo -en john275' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::john275:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
