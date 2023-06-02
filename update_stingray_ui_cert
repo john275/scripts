@@ -1,0 +1,11 @@
+#!/bin/bash
+
+stingray=$1
+cert=$2
+key=$3
+
+scp ${key} admin@${stingray}:/opt/zeus/admin/etc/admin.private
+
+scp ${cert} admin@${stingray}:/opt/zeus/admin/etc/admin.public
+
+ssh admin@${stingray} '/opt/zeus/admin/rc restart'
