@@ -13,7 +13,7 @@ then
 	echo wiki not downloaded
 	exit 1
 fi
-curl -s https://wiki.computez.com/index.html > gubbins.html.${datestamp}
+curl -su${user}:${pass} https://wiki.computez.com/upm/gubbins.html > gubbins.html.${datestamp}
 res=$(curl -su${user}:${pass} -XPOST https://www3.computez.com/upm/deletefile.php --data 'fileToDelete=gubbins.html&Delete=Submit')
 if [[ ! "${res}" == "OK" ]]
 then
