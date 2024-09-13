@@ -7,6 +7,9 @@ datestamp=$(date +%y%m%d_%H%M%S)
 
 cd
 
+export HTTPS_PROXY=$(curl -s http://wpad.anl.dmgt.net/wpad.dat | grep PROXY\ dmg-proxy-vip | tail -1 | sed -r 's/return "PROXY (.*)";/\1/g')
+export HTTP_PROXY=${HTTPS_PROXY}
+
 mv Downloads/gubbins.html gubbins.html
 if [[ ! "$?" == "0" ]]
 then
