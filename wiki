@@ -7,8 +7,8 @@ datestamp=$(date +%y%m%d_%H%M%S)
 
 cd
 
-export HTTPS_PROXY=$(curl -s http://wpad.$(cat /etc/resolv.conf | grep search | awk '{print $2}')/wpad.dat | grep PROXY\ | tail -1 | sed -r 's/return "PROXY (.*)";/\1/g')
-export HTTP_PROXY=${HTTPS_PROXY}
+export http_proxy=$(curl -s http://wpad.$(cat /etc/resolv.conf | grep search | awk '{print $2}')/wpad.dat | grep PROXY\ | tail -1 | sed -r 's/\t*(.*)return "PROXY (.*)";/\2/g' | tr -d '\r\n')
+export https_proxy=${http_proxy}
 
 mv Downloads/gubbins.html gubbins.html
 if [[ ! "$?" == "0" ]]
