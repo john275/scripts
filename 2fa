@@ -34,6 +34,9 @@ function 2fa_codes {
   echo -en rubrick SLO' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en rubrick Cloud' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickcld:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en Wiz' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::wiz:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+  echo -en Veeam SLO' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+  echo -en Veeam REA' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+
 }
 
 if [[ "$1" == "-w" ]]
