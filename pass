@@ -7,7 +7,7 @@ function decode_pass () {
   echo -e ${2} $(basename ${1})' \t\t ' -\ $(eyaml decrypt -s ${3})
 }
 
-egrep -rH ${1}.*ENC ~/puppet/data | sed 's/eyaml:/eyaml /g' | while read l
+egrep -rH ${1}.*ENC ~/puppet/data ~/bin/scripts/facts.eyaml | sed 's/eyaml:/eyaml /g' | while read l
 do
   file=$(echo ${l} | awk '{print $1}')
   key=$(echo ${l} | awk '{print $2}')
