@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
+
+function decode_pass () {
+
+  echo -e ${2} $(basename ${1})' \t\t ' -\ $(eyaml decrypt -s ${3})
+}
+
+egrep -rH ${1}.*ENC ~/puppet/data | sed 's/eyaml:/eyaml /g' | while read l
+do
+  file=$(echo ${l} | awk '{print $1}')
+  key=$(echo ${l} | awk '{print $2}')
+  encrypt=$(echo ${l} | awk '{print $3}')
+  decode_pass ${file} ${key} ${encrypt}
+done
