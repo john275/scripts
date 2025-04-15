@@ -4,44 +4,49 @@ export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
 
 function 2fa_codes {
 
-  echo -en Gmail' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Gmail:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Akamai' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Akamai:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Secret Server' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Secret_Server:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Github' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Github:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS Arcanum' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Arcanum:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS MOL' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS Sandbox' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Sandbox:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS root' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_root:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Slack MOL' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Slack Metro' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_Metro:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS BidMax' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_BidMax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en AWS Metrodev' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Metrodev:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Bitbucket' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Bitbucket:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-#  echo -en Envato' \t\t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Envato:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-#  echo -en PayPal' \t\t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::PayPal:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en MailGun' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::MailGun:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en GovGWTax' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWTax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en GovGWPension' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en BitWarden' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::BitWarden:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en SSO' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::SSO:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en npmjs' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::npmjs:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en 1password' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1password:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en 1password DMG' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1passwordDMG:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en namecheap' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::namecheap:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en rubrick REA' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-#  echo -en john275' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::john275:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en rubrick SLO' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en rubrick Cloud' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickcld:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Wiz' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::wiz:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Veeam SLO' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Veeam REA' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Guardicore' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::guardicore:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en nrgok' \t\t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::nrgok:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Truenas MOL HSK' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasmolhsk:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Truenas MOL RDG' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasmolrdg:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Truenas ANL HSK' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlhsk:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
-  echo -en Truenas ANL RDG' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlrdg:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+  truncate --size=0 $$temp
+  echo -e 1 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Gmail:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Gmail >> $$temp &
+  echo -e 2 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS >> $$temp &
+  echo -e 3 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Akamai:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Akamai >> $$temp &
+  echo -e 4 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Secret_Server:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Secret Server >> $$temp &
+  echo -e 5 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Github:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Github >> $$temp &
+  echo -e 6 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Arcanum:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS Arcanum >> $$temp &
+  echo -e 7 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS MOL >> $$temp &
+  echo -e 8 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Sandbox:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS Sandbox >> $$temp &
+  echo -e 9 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_root:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS root >> $$temp &
+  echo -e 10 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_MOL:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Slack MOL >> $$temp &
+  echo -e 11 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Slack_Metro:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Slack Metro >> $$temp &
+  echo -e 12 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_BidMax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS BidMax >> $$temp &
+  echo -e 13 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS_Metrodev:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS Metrodev >> $$temp &
+  echo -e 14 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Bitbucket:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Bitbucket >> $$temp &
+  echo -e 15 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::MailGun:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - MailGun >> $$temp &
+  echo -e 16 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWTax:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - GovGWTax >> $$temp &
+  echo -e 17 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::GovGWPension:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - GovGWPension >> $$temp &
+  echo -e 18 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::BitWarden:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - BitWarden >> $$temp &
+  echo -e 19 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::SSO:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - SSO >> $$temp &
+  echo -e 20 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::npmjs:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - npmjs >> $$temp &
+  echo -e 21 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1password:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - 1password >> $$temp &
+  echo -e 22 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::1passwordDMG:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - 1password DMG >> $$temp &
+  echo -e 23 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::namecheap:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - namecheap >> $$temp &
+  echo -e 24 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - rubrick REA >> $$temp &
+  echo -e 25 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - rubrick SLO >> $$temp &
+  echo -e 26 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::rubrickcld:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - rubrick Cloud >> $$temp &
+  echo -e 27 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::wiz:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Wiz >> $$temp &
+  echo -e 28 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamslo:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Veeam SLO >> $$temp &
+  echo -e 29 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Veeam REA >> $$temp &
+  echo -e 30 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::guardicore:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Guardicore >> $$temp &
+  echo -e 31 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::nrgok:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - nrgok >> $$temp &
+  echo -e 32 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasmolhsk:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas MOL HSK >> $$temp &
+  echo -e 33 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasmolrdg:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas MOL RDG >> $$temp &
+  echo -e 34 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlhsk:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas ANL HSK >> $$temp &
+  echo -e 35 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlrdg:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas ANL RDG >> $$temp &
+
+  while [[ "$(wc -l $$temp | awk '{print $1}')" != "35" ]]
+  do
+    sleep 0.5
+  done
+
+  sort -n $$temp | awk '{$1=""}{print $0}'
 }
 
 if [[ "$1" == "-w" ]]
