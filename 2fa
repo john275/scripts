@@ -38,6 +38,7 @@ function 2fa_codes {
   echo -en Veeam REA' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::veeamrea:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en Guardicore' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::guardicore:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
   echo -en nrgok' \t\t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::nrgok:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
+  echo -en Truenas MOL' \t ' -\ ; oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasmol:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))
 }
 
 if [[ "$1" == "-w" ]]
