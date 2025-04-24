@@ -40,7 +40,7 @@ function 2fa_codes {
   echo -e 34 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlhsk:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas ANL HSK >> $$temp &
   echo -e 35 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tnasanlrdg:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Truenas ANL RDG >> $$temp &
 
-  while [[ "$(wc -l $$temp | awk '{print $1}')" != "35" ]]
+  while [[ "$(wc -l $$temp 2>/dev/null | awk '{print $1}')" != "35" ]]
   do
     sleep 0.5
   done
