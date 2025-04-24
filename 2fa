@@ -4,7 +4,6 @@ export EYAML_CONFIG=${HOME}/eyamlkeys.yaml
 
 function 2fa_codes {
 
-  truncate --size=0 $$temp
   echo -e 1 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Gmail:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Gmail >> $$temp &
   echo -e 2 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::AWS:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - AWS >> $$temp &
   echo -e 3 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::Akamai:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Akamai >> $$temp &
@@ -47,6 +46,7 @@ function 2fa_codes {
   done
 
   sort -n $$temp | awk '{$1=""}{print $0}'
+  rm $$temp
 }
 
 if [[ "$1" == "-w" ]]
