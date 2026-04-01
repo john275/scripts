@@ -43,3 +43,4 @@ ln -s scripts/sunset astronomical_twilight_end
 ln -s scripts/send_arp.py
 ln -s scripts/kvm
 ln -s scripts/pass
+ln -s scripts/get_latest.py
