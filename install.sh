@@ -45,3 +45,4 @@ ln -s scripts/kvm
 ln -s scripts/pass
 ln -s scripts/get_latest.py
 ln -s scripts/ip
+ln -s scripts/pistate
