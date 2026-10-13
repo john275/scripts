@@ -42,8 +42,10 @@ function 2fa_codes {
   echo -e 36 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::ring:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Ring >> $$temp &
   echo -e 37 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::dmgtdiscounts' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - DMGTDiscounts >> $$temp &
   echo -e 38 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::godaddy:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - GoDaddy >> $$temp &
+  echo -e 39 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::tfl:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - TFL >> $$temp &
+  echo -e 40 $(oathtool -b --totp $(echo $(eyaml decrypt -s $(grep 'totp::crowdstrike:' ${HOME}/facts.eyaml | awk '{print $2}') 2>/dev/null))) - Crowdstrike >> $$temp &
 
-  while [[ "$(wc -l $$temp 2>/dev/null | awk '{print $1}')" != "38" ]]
+  while [[ "$(wc -l $$temp 2>/dev/null | awk '{print $1}')" != "40" ]]
   do
     sleep 0.5
   done
